@@ -1,0 +1,39 @@
+<div class="kitchen">
+  <div class="container-fluid">
+    <div class="row">
+      <select class="form-control" [(ngModel)]="status">
+        <option value="">Tất cả</option>
+        <option value="0">Chưa làm</option>
+        <option value="1">Đang làm</option>
+        <option value="2">Đã làm song</option>
+      </select>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3 col-md-4 col-sm-6 col-12" *ngFor="let item of orders | kitchenDishStatus:status">
+        <div class="card card-inverse"
+             [ngClass]="{'card-danger': item.status == 0, 'card-primary': item.status==2, 'card-warning': item.status==1}">
+          <div class="card-header ">
+            <h5 title="{{item.dish.name}}">
+              {{item.dish.name}} <span class="badge badge-pill badge-primary">{{item.quantity}}</span>
+            </h5>
+          </div>
+          <div class="card-block">
+            <i class="fa fa-fw fa-spinner fa-spin" *ngIf="item.status == 1"></i>
+            <i class="fa fa-fw fa-close" *ngIf="item.status == 0"></i>
+            <i class="fa fa-fw fa-check" *ngIf="item.status == 2"></i>
+            <blockquote class="card-blockquote">
+              <p>{{item.description}}</p>
+            </blockquote>
+
+            <button *ngIf="item.status == 0" type="button" class="btn btn-primary" (click)="kitchenDish(item,1)">Chế biến
+            </button>
+            <button *ngIf="item.status == 1" type="button" class="btn btn-primary" (click)="kitchenDish(item,2)">Trả món
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

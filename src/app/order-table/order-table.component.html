@@ -1,0 +1,23 @@
+<div class="card" *ngFor="let order of orders">
+  <table class="table">
+    <thead>
+    <tr>
+      <th colspan="6" class="table-info" style="text-align: center">BÀN SỐ  {{order.tableId}}
+       ( <i class="fa fa-clock-o"></i> {{order.createdDate | date:'shortTime'}} )</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let item of order.items;let i = index">
+    <tr >
+      <th width="10%">{{i + 1}}</th>
+      <td width="35%">{{item.dish.name}}</td>
+      <td width="30%">{{item.description}}</td>
+      <td width="20%">Số lượng: {{item.quantity}}</td>
+      <td width="5%">
+        <span *ngIf="item.status == 0" style="color: red"><i class="fa fa-fw fa-close"></i></span>
+        <span *ngIf="item.status == 1" style="color: #f0ad4e"><i class="fa fa-fw fa-spinner fa-spin"></i></span>
+        <span *ngIf="item.status == 2" style="color: #0275d8"><i class="fa fa-fw fa-check"></i></span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

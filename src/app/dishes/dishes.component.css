@@ -1,0 +1,25 @@
+.dishes {
+  margin: 10px;
+}
+
+.card {
+  padding: 10px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+img {
+  width: 100%;
+}
+
+#status {
+  margin-bottom: 5px;
+}
+
+#categories{
+  margin-bottom: 5px;
+}
+
+.name{
+
+}

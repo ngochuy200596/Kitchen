@@ -1,0 +1,25 @@
+.kitchen{
+  margin: 10px;
+}
+
+select{
+  margin: 0px 15px 15px 15px;
+}
+.card-header button {
+  float: right;
+  width: 98px;
+  height: 38px;
+}
+
+.card{
+  margin-bottom: 15px;
+}
+
+.card-block .card-text span {
+  float: right;
+  padding-right: 15px;
+}
+
+.card-block i{
+  float: right;
+}

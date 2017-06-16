@@ -1,0 +1,50 @@
+<div class="dishes">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2" id="status">
+        <select class="form-control" [(ngModel)]="status">
+          <option value="" selected="true">Tất cả</option>
+          <option value="1">Còn</option>
+          <option value="0">Hết</option>
+        </select>
+      </div>
+      <div class="col-md-2" id="categories">
+        <select class="form-control" [(ngModel)]="categories">
+          <option value="" selected="true">Tất cả</option>
+          <option value="1">Nướng</option>
+          <option value="2">Salad</option>
+          <option value="3">Kho</option>
+          <option value="4">Chiên</option>
+          <option value="5">Canh</option>
+          <option value="6">Rau</option>
+          <option value="7">Trộn</option>
+        </select>
+      </div>
+      <div class="col-md-8">
+        <div class="input-group">
+          <input class="form-control" type="text" placeholder="Tìm tên món ăn" [(ngModel)]="search">
+          <span class="input-group-addon">Tìm Kiếm</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3 col-md-4 col-sm-6 col-12"
+           *ngFor="let dish of (dishes|searchDishPage:search|dishStatusPipe:status|categoryPipe:categories|sort)">
+        <div class="card-deck">
+          <div class="card"
+               [ngClass]="{'card-outline-primary': dish.status == 1,'card-outline-danger':dish.status == 0}  ">
+            <img class="card-img-top" src="{{dish.image}}" alt="{{dish.name}}">
+            <div class="card-block">
+              <h4 class="card-title" class="name">{{dish.name}}</h4>
+              <p class="card-text">{{dish.price}} VND</p>
+              <a href="#" class="btn btn-primary" (click)="setStatus(dish.id,0)" *ngIf="dish.status == 1">Báo hết</a>
+              <a href="#" class="btn btn-primary btn-danger" (click)="setStatus(dish.id,1)" *ngIf="dish.status == 0">Báo còn</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
